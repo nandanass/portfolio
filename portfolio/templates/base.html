@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Portfolio{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="/"><i class="fa fa-home"></i> Home</a>
+    <a href="/about/"><i class="fa fa-user"></i> About</a>
+    <a href="/skills/"><i class="fa fa-brain"></i> Skills</a>
+    <a href="/projects/"><i class="fa fa-briefcase"></i> Projects</a>
+    <a href="/contact/"><i class="fa fa-envelope"></i> Contact</a>
+
+    <input
+    type="search"
+    id="searchInput"
+    placeholder="Search portfolio..."
+    class="search-box"
+    autocomplete="off"
+    onkeydown="handleSearch(event)"
+/>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- SEARCH SCRIPT -->
+<script>
+function searchContent() {
+    const input = document.getElementById("searchInput").value
+        .toLowerCase()
+        .trim();
+
+    if (input.length < 2) return;
+
+    const routes = {
+        "python": "/skills/#python",
+        "web": "/skills/#web-development",
+        "html": "/skills/#web-development",
+        "css": "/skills/#web-development",
+        "machine": "/skills/#machine-learning",
+        "learning": "/skills/#machine-learning",
+        "thingsboard": "/skills/#thingsboard",
+
+        "noesis": "/projects/#noesis",
+        "portfolio": "/projects/#portfolio",
+        "simulator": "/projects/#simulator",
+        "diabetic": "/projects/#diabetic-retinopathy",
+        "retinopathy": "/projects/#diabetic-retinopathy",
+        "fall": "/projects/#fall-detection",
+        "calculator": "/projects/#calculator",
+
+        "about": "/about/",
+        "contact": "/contact/",
+        "email": "/contact/",
+        "linkedin": "/contact/"
+    };
+
+    for (let key in routes) {
+        if (input.includes(key)) {
+            window.location.href = routes[key];
+            return;
+        }
+    }
+
+    // ✅ Default fallback (NO POPUP)
+    window.location.href = "/projects/";
+}
+</script>
+<script>
+function handleSearch(event) {
+    if (event.key !== "Enter") return;
+
+    const input = document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    if (input.length === 0) return;
+
+    // SEARCH MAP
+    const searchMap = [
+        { keywords: ["python"], url: "/skills/#python" },
+        { keywords: ["web", "html", "css", "javascript"], url: "/skills/#web-development" },
+        { keywords: ["machine", "learning", "ml"], url: "/skills/#machine-learning" },
+        { keywords: ["thingsboard", "iot"], url: "/skills/#thingsboard" },
+
+        { keywords: ["noesis"], url: "/projects/#noesis" },
+        { keywords: ["portfolio"], url: "/projects/#portfolio" },
+        { keywords: ["simulator"], url: "/projects/#simulator" },
+        { keywords: ["diabetic", "retinopathy"], url: "/projects/#diabetic-retinopathy" },
+        { keywords: ["fall", "falling"], url: "/projects/#fall-detection" },
+        { keywords: ["calculator"], url: "/projects/#calculator" },
+
+        { keywords: ["about", "me", "resume"], url: "/about/" },
+        { keywords: ["contact", "email", "phone", "linkedin", "github"], url: "/contact/" }
+    ];
+
+    for (let item of searchMap) {
+        for (let key of item.keywords) {
+            if (input.includes(key)) {
+                window.location.href = item.url;
+                return;
+            }
+        }
+    }
+
+    // DEFAULT FALLBACK
+    window.location.href = "/projects/";
+}
+</script>
+
+</body>
+</html>

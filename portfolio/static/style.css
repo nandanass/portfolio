@@ -1,0 +1,426 @@
+/* ================= GLOBAL ================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(
+        270deg,
+        #020617,
+        #0f172a,
+        #020617
+    );
+    background-size: 400% 400%;
+    animation: bgMove 18s ease infinite;
+    color: #e5e7eb;
+}
+
+/* Animated background */
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: #cbd5f5;
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar a:hover {
+    color: #38bdf8;
+    transform: translateY(-2px);
+}
+
+/* Underline animation */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #38bdf8;
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* ================= MAIN ================= */
+.main {
+    margin-top: 110px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    animation: pageFade 0.9s ease;
+}
+
+/* Page load animation */
+@keyframes pageFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= HEADINGS ================= */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(56,189,248,0.4);
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+/* ================= HOME HERO ================= */
+.home-hero {
+    text-align: center;
+}
+
+/* Profile image animation */
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 0 30px rgba(56,189,248,0.6);
+    animation: floatPic 4s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+/* Floating animation */
+@keyframes floatPic {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================= CARD ================= */
+.card {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card shine effect */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(56,189,248,0.18),
+        transparent
+    );
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 35px 70px rgba(56,189,248,0.25);
+}
+
+/* Card text */
+.card p, .card li {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+/* ================= ICON ANIMATIONS ================= */
+.card h3 i {
+    color: #38bdf8;
+    margin-right: 8px;
+    animation: iconPulse 2.5s infinite;
+}
+
+/* Icon pulse */
+@keyframes iconPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ================= LIST ================= */
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* ================= LINKS ================= */
+a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .navbar {
+        gap: 18px;
+        font-size: 14px;
+    }
+
+    .profile-pic {
+        width: 130px;
+        height: 130px;
+    }
+}
+/* ===== CONTACT PAGE ===== */
+
+.page-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #e5e7eb;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* Common card style */
+.contact-card {
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    animation: fadeUp 0.8s ease forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.contact-card p,
+.contact-card a {
+    font-size: 16px;
+    color: #e5e7eb;
+    text-decoration: none;
+}
+
+/* Hover effect */
+.contact-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* Individual box colors */
+.phone {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.email {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.linkedin {
+    background: linear-gradient(135deg, #0a66c2, #004182);
+}
+/* ================= SEARCH BOX ================= */
+
+.search-box {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    color: #f8fafc;
+    font-size: 14px;
+    width: 180px;
+    transition: all 0.3s ease;
+}
+
+.search-box::placeholder {
+    color: #cbd5e1;
+}
+
+.search-box:focus {
+    width: 240px;
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 15px rgba(56,189,248,0.6);
+}
+/* ===== PHONE ICON RING ANIMATION ===== */
+.ringing {
+    animation: ring 1.5s infinite;
+}
+
+@keyframes ring {
+    0% { transform: rotate(0deg); }
+    5% { transform: rotate(15deg); }
+    10% { transform: rotate(-15deg); }
+    15% { transform: rotate(10deg); }
+    20% { transform: rotate(-10deg); }
+    25% { transform: rotate(5deg); }
+    30% { transform: rotate(-5deg); }
+    35% { transform: rotate(0deg); }
+}
+
+/* ===== COPY PHONE NUMBER ===== */
+#phoneNumber {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.copy-msg {
+    display: none;
+    font-size: 13px;
+    margin-top: 6px;
+    color: #bbf7d0;
+}
+
+/* ===== CONTACT GRID ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* ===== CONTACT CARD ===== */
+.contact-card {
+    padding: 35px;
+    border-radius: 22px;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    animation: fadeUp 0.9s ease forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-card i {
+    font-size: 42px;
+    margin-bottom: 14px;
+}
+
+.contact-card h3 {
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    margin-bottom: 14px;
+    font-size: 15px;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+}
+
+/* ===== COLORS ===== */
+.phone {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.email {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.linkedin {
+    background: linear-gradient(135deg, #0a66c2, #004182);
+}
+
+.github {
+    background: linear-gradient(135deg, #111827, #000000);
+}
+
+/* ===== BUTTONS ===== */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: white;
+    color: #1e40af;
+    transform: scale(1.05);
+}
+
+.email-btn { background: rgba(255,255,255,0.25); }
+.linkedin-btn { background: rgba(255,255,255,0.25); }
+.github-btn { background: rgba(255,255,255,0.25); }
+
+/* ===== COPY FEEDBACK ===== */
+.copy-msg {
+    display: none;
+    font-size: 13px;
+    color: #bbf7d0;
+}
+
+/* ===== RING ANIMATION ===== */
+.ringing {
+    animation: ring 1.5s infinite;
+}
+
+@keyframes ring {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-15deg); }
+    30% { transform: rotate(10deg); }
+    40% { transform: rotate(-10deg); }
+    50% { transform: rotate(0); }
+}

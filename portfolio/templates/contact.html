@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<h2 class="page-title">Contact Me</h2>
+
+<div class="contact-grid">
+
+    <!-- PHONE -->
+    <div class="contact-card phone">
+        <i class="fa fa-phone ringing"></i>
+        <h3>Phone</h3>
+        <p onclick="copyPhone()" id="phoneNumber">+91 75588 41213</p>
+        <span id="copyMsg" class="copy-msg">Copied!</span>
+
+        <div class="contact-actions">
+            <a href="tel:+917558841213" class="action-btn call">
+                <i class="fa fa-phone"></i> Call
+            </a>
+            <a href="sms:+917558841213" class="action-btn message">
+                <i class="fa fa-comment"></i> Message
+            </a>
+            <a href="https://wa.me/917558841213" target="_blank" class="action-btn whatsapp">
+                <i class="fa fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+
+   <!-- EMAIL -->
+<div class="contact-card email">
+    <i class="fa fa-envelope"></i>
+    <h3>Email</h3>
+    <p>snandanas24@gmail.com</p>
+
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=snandanas24@gmail.com"
+       target="_blank"
+       class="action-btn email-btn">
+        <i class="fa fa-paper-plane"></i> Send Email
+    </a>
+</div>
+
+    <!-- LINKEDIN -->
+    <div class="contact-card linkedin">
+        <i class="fa fa-linkedin"></i>
+        <h3>LinkedIn</h3>
+        <p>Professional Profile</p>
+        <a href="https://www.linkedin.com/in/nandana-s-15886235a"
+           target="_blank" class="action-btn linkedin-btn">
+            <i class="fa fa-linkedin"></i> View Profile
+        </a>
+    </div>
+
+    <!-- GITHUB -->
+    <div class="contact-card github">
+        <i class="fa fa-github"></i>
+        <h3>GitHub</h3>
+        <p>Projects & Code</p>
+        <a href="https://github.com/"
+           target="_blank" class="action-btn github-btn">
+            <i class="fa fa-github"></i> Visit GitHub
+        </a>
+    </div>
+
+</div>
+{% endblock %}
